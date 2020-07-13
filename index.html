@@ -60,9 +60,20 @@
     }
 
     function openWindow() {
+      liff.openWindow({
+        url:"http://line.me",
+        external:true
+      })
     }
 
     async function getFriendship() {
+      const friend = await liff.getFriendship()
+      document.getElementById("friendship").append(friend.friendFlag)
+      if (!friend.friendFlag){
+        if (confirm("คุณยังไม่ได้เพิ่ม ฺนะ เป็นเพื่อน จะเพิ่มไหม?")){
+          window.location=""
+        }
+      }
     }
 
     async function sendMsg() {
